@@ -1,0 +1,80 @@
+/* Back Button Styling */
+.back-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .back-button:hover {
+    background-color: #333; /* Slightly lighter black on hover */
+  }
+body {
+font-family: 'Georgia', serif;
+margin: 40px;
+padding: 0;
+background-color: #195b75;
+color: #333;
+}
+.container {
+max-width: 900px;
+margin: 0 auto;
+background-color: #fff;
+padding: 40px;
+border-radius: 8px;
+box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+h2 {
+margin-top: 30px;
+font-size: 24px;
+color: #000;
+}
+p, ul {
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+ul {
+padding-left: 20px;
+}
+ul li {
+    margin-bottom: 10px;
+  }
+a {
+color: #007BFF;
+text-decoration: none;
+}
+a:hover {
+text-decoration: underline;
+}
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .container {
+      padding: 15px;
+      margin: 10px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p, ul {
+      font-size: 1rem;
+    }
+
+    ul li {
+      margin-bottom: 15px;
+    }
+    .back-button {
+                    top: 10px; /* Move the button slightly upwards for mobile */
+                    font-size: 12px; /* Adjust font size for smaller screens */
+                    padding: 8px 16px; /* Adjust padding for smaller screens */
+                  }
+  }

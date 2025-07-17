@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile and Goals</title>
+  <link rel ="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="sidebar">
+        
+      <button onclick="document.getElementById('profile').scrollIntoView()" id="profileButton">PROFILE</button>
+      <button onclick="document.getElementById('goals').scrollIntoView()" id="goalsButton">GOALS</button>
+    </div>
+  
+    <a href="{% url 'home' %}">
+      <button id="backButton">BACK</button>
+    </a>
+    
+
+
+  <div class="content">
+    <!-- My Profile Section -->
+    <div id="profile" class="section">
+      <h2>MY PROFILE</h2>
+      <div class="profile-picture">
+        {% if user.is_authenticated and user.userprofile.profile_picture %}
+  <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" id="profilePic" />
+{% else %}
+  <img src="https://static-00.iconduck.com/assets.00/profile-major-icon-512x512-xosjbbdq.png" alt="Default Profile Picture" id="profilePic" />
+{% endif %}
+<input type="file" id="uploadInput" style="display: none;" accept="image/*">  
+        <!-- Buttons -->
+        <div>
+          <button onclick="document.getElementById('uploadInput').click()">Change Picture</button>
+          <button onclick="removeProfilePic()">Delete picture</button>
+        </div>
+      </div>
+
+      <!-- Placeholder Boxes -->
+      <div class="form-group">
+        <label>First Name:</label>
+        <div style="width: 50%; height: 40px; background-color: #fff; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% if user.first_name %}
+            {{ user.first_name }}
+          {% else %}
+            {{ user.username }}
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Last Name:</label>
+        <div style="width: 50%; height: 40px; background-color: #fff; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% if user.last_name %}
+            {{ user.last_name }}
+          {% else %}
+            &mdash;
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Email:</label>
+        <div style="width: 50%; height: 40px; background-color: #fff; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {{ user.email }}
+        </div>
+      </div>
+      
+
+      <div id="goals" class="section">
+        <h2>MY GOALS</h2>
+        <form method="POST" action="{% url 'profile' %}">
+          {% csrf_token %}
+        <!-- Short Term Goal -->
+        <div class="form-group">
+          <label>Short Term Goals</label>
+          {% if goal %}
+            <input type="text" name="short_term_goal" value="{{ goal.short_term_goal }}" style="width: 70%; padding: 10px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% else %}
+            <input type="text" name="short_term_goal" value="" style="width: 70%; padding: 10px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% endif %}
+        </div>
+      
+        <!-- Long Term Goal -->
+        <div class="form-group">
+          <label>Long Term Goals</label>
+          {% if goal %}
+            <input type="text" name="long_term_goal" value="{{ goal.long_term_goal }}" style="width: 70%; padding: 10px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% else %}
+            <input type="text" name="long_term_goal" value="" style="width: 70%; padding: 10px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% endif %}
+        </div>
+      
+        <!-- Hobbies -->
+        <div class="form-group">
+          <label>Hobbies</label>
+          {% if goal %}
+            <input type="text" name="hobbies" value="{{ goal.hobbies }}" style="width: 70%; padding: 10px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% else %}
+            <input type="text" name="hobbies" value="" style="width: 70%; padding: 10px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% endif %}
+        </div>
+      
+        <!-- Goal Target Date -->
+        <div class="form-group">
+          <label>Goal Target Date</label>
+          {% if goal %}
+            <input type="date" name="goal_target_date" value="{{ goal.goal_target_date|date:'Y-m-d' }}" style="width: 70%; padding: 10px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% else %}
+            <input type="date" name="goal_target_date" value="" style="width: 70%; padding: 10px; border: 2px solid #ccc; border-radius: 10px; box-shadow: 1px 2px 5px gray;">
+          {% endif %}
+          <!-- <p>Debug Date: {{ goal.goal_target_date }}</p> -->
+
+        </div>
+      </div>
+      <!-- <form method="POST" action="">
+        {% csrf_token %} -->
+        <!-- your input fields here -->
+        <button type="submit">Save</button>
+      </form>
+    
+    </div>
+
+     <!-- Text Entry Options -->
+     
+  <script src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>

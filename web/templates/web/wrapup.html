@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diary Wrap Up</title>
+    <link rel="stylesheet" href="{% static 'css/wrapup.css' %}">
+</head>
+<body>
+    <div class="diary-container">
+        <h1>Weekly Wrap-Up ({{ start_date }} - {{ end_date }})</h1>
+
+        {% if goal %}
+            <h2>Your Goals:</h2>
+            <p><strong>Short-Term Goal:</strong> {{ goal.short_term_goal }}</p>
+            <p><strong>Long-Term Goal:</strong> {{ goal.long_term_goal }}</p>
+        {% else %}
+            <p>No goals set yet.</p>
+        {% endif %}
+
+        <h2>Diary Entry Analysis</h2>
+        <p>You had {{ total_entries }} diary entries this week. {{ goal_related_count }} of them mentioned terms related to your goals.</p>
+        <p>Average sentiment of your entries: {{ average_sentiment|floatformat:2 }}
+        (A score closer to 1 is more positive, and closer to -1 is more negative)</p>
+        {% if entries_data %}
+    {% for entry in entries_data %}
+        <div class="entry-summary">
+            <h3>Entry Date: {{ entry.date }}</h3>
+            <p><strong>Content:</strong> {{ entry.content }}</p>
+            <p><strong>Sentiment Score:</strong> {{ entry.sentiment_score|floatformat:2 }}</p>
+            <p><strong>Keywords related to your goals:</strong>
+                {% if entry.relevant_keywords %}
+                    {{ entry.relevant_keywords|join:", " }}
+                {% else %}
+                    None
+                {% endif %}
+            </p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No entries available for this week.</p>
+{% endif %}
+
+        <h2>Summary</h2>
+        <textarea class="lined-textarea" placeholder="Here is a quick summary of your week...">
+            {% if entries_data %}
+                This week, you wrote {{ total_entries }} diary entries.
+                {% if goal_related_count > 0 %}
+                    {{ goal_related_count }} of your entries mentioned terms related to your goals.
+                {% else %}
+                    None of your entries directly mentioned your goals.
+                {% endif %}
+
+                The overall sentiment of your diary entries was {{ average_sentiment|floatformat:2 }}.
+                 {% if average_sentiment > 0.2 %}
+                    This suggests a generally positive tone.
+                {% elif average_sentiment < -0.2 %}
+                    This suggests a generally negative tone.
+                {% else %}
+                    The tone was mostly neutral.
+                {% endif %}
+
+                Consider reflecting on how your daily activities align with your stated goals.
+            {% else %}
+                No diary entries for this week.
+            {% endif %}
+        </textarea>
+    </div>
+    <a href="{% url 'home' %}">
+        <button id="backButton">BACK</button>
+    </a>
+</body>
+</html>

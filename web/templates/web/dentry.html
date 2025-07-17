@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}            
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Diary Entry</title>
+          
+        <link rel="stylesheet" href="{% static 'css/dentry.css' %}">
+        <!-- Toastify CSS -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+      
+      <!-- Toastify JS -->
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+      
+      </head>
+<body>
+    <div class="header">
+        <div class="top-bar">
+          <button class="date-button">
+            <label for="entry-date" class="calendar-label">
+              <input type="date" id="entry-date" name="entry-date"
+               value="{{ date|date:'Y-m-d' }}" onchange="loadDiaryEntry()" />
+                <span class="calendar-icon"></span>
+                
+              </label>
+              
+          </button>
+          
+          <div class="menu-save-container" style="display: flex; align-items: center; justify-content: flex-end; width: 100%;">
+            <!-- Save Button -->
+            <button class="save-button" onclick="saveEntry()" style="margin-right: 10px;">SAVE</button>
+            <!-- Ellipsis Menu -->
+            <div class="ellipsis-menu" style="position: relative;">
+              <button class="ellipsis-button" onclick="toggleEmojiMenu()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #fff;">&#x22EE;</button>
+              <div id="emoji-menu" class="emoji-menu" style="display: none; position: absolute; right: 0; top: 70px; background: #fff; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 100; padding: 8px;">
+                <div style="display: grid; grid-template-columns: repeat(5, 40px); grid-template-rows: repeat(3, 40px); gap: 4px;">
+                  <button class="emoji-button" onclick="insertEmoji('😊')" style="border: none; background: none; font-size: 20px; cursor: pointer;">😊</button>
+                  <button class="emoji-button" onclick="insertEmoji('😂')" style="border: none; background: none; font-size: 20px; cursor: pointer;">😂</button>
+                  <button class="emoji-button" onclick="insertEmoji('😍')" style="border: none; background: none; font-size: 20px; cursor: pointer;">😍</button>
+                  <button class="emoji-button" onclick="insertEmoji('🥰')" style="border: none; background: none; font-size: 20px; cursor: pointer;">🥰</button>
+                  <button class="emoji-button" onclick="insertEmoji('😎')" style="border: none; background: none; font-size: 20px; cursor: pointer;">😎</button>
+                  <button class="emoji-button" onclick="insertEmoji('😭')" style="border: none; background: none; font-size: 20px; cursor: pointer;">😭</button>
+                  <button class="emoji-button" onclick="insertEmoji('😡')" style="border: none; background: none; font-size: 20px; cursor: pointer;">😡</button>
+                  <button class="emoji-button" onclick="insertEmoji('😞')" style="border: none; background: none; font-size: 20px; cursor: pointer;">😞</button>
+                  <button class="emoji-button" onclick="insertEmoji('👍')" style="border: none; background: none; font-size: 20px; cursor: pointer;">👍</button>
+                  <button class="emoji-button" onclick="insertEmoji('🙏')" style="border: none; background: none; font-size: 20px; cursor: pointer;">🙏</button>
+                  <button class="emoji-button" onclick="insertEmoji('✨')" style="border: none; background: none; font-size: 20px; cursor: pointer;">✨</button>
+                  <button class="emoji-button" onclick="insertEmoji('❤️')" style="border: none; background: none; font-size: 20px; cursor: pointer;">❤️</button>
+                  <button class="emoji-button" onclick="insertEmoji('🎉')" style="border: none; background: none; font-size: 20px; cursor: pointer;">🎉</button>
+                  <button class="emoji-button" onclick="insertEmoji('🤔')" style="border: none; background: none; font-size: 20px; cursor: pointer;">🤔</button>
+                  <button class="emoji-button" onclick="insertEmoji('😴')" style="border: none; background: none; font-size: 20px; cursor: pointer;">😴</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <script>
+            function toggleEmojiMenu() {
+              const menu = document.getElementById('emoji-menu');
+              menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+              document.addEventListener('click', function handler(e) {
+                if (!menu.contains(e.target) && !e.target.classList.contains('ellipsis-button')) {
+                  menu.style.display = 'none';
+                  document.removeEventListener('click', handler);
+                }
+              });
+            }
+          </script>
+          
+    
+        </div>
+      </div>
+      <div class="diary-container">
+        <form method="POST">
+          {% csrf_token %}
+          <textarea name="content" class="lined-textarea" placeholder="Write your thoughts here...">{{ entry.content }}</textarea>
+          <input type="hidden" name="date" value="{{ date }}">
+        </form>
+      </div>
+
+    <!-- Back Button -->
+    <a href="{% url 'home' %}">
+        <button class="back-button">BACK</button>
+    </a>
+
+    <!-- CSRF token setup -->
+    <script>
+        // Store CSRF token from Django template in a JavaScript-accessible variable
+        const csrfToken = "{{ csrf_token }}";
+        document.cookie = "csrftoken=" + csrfToken + "; path=/";
+      </script>
+    <script src="{% static 'js/dentry.js' %}"></script>    
+</body>
+</html>

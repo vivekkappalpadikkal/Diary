@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diary Wrap Up</title>
+    <link rel="stylesheet" href="{% static 'css/weekly-wrapup.css' %}">
+</head>
+<body>
+    <div class="diary-container">
+  <h2>Weekly Wrap-Up ({{ week_start }} to {{ week_end }})</h2>
+
+  {% if entries %}
+    <div class="wrapup-text" style="white-space: pre-wrap; margin-top: 1rem;">
+      {{ wrapup|safe }}
+    </div>
+  {% else %}
+    <p>No diary entries found for this week.</p>
+  {% endif %}
+
+  
+</div>
+    <a href="{% url 'home' %}">
+        <button id="backButton">BACK</button>
+    </a>
+</body>
+</html>
