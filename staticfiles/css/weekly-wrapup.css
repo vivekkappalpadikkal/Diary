@@ -1,0 +1,60 @@
+body {
+  background-color: #195b75;
+  margin: 0;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.diary-container {
+  background-color: #fafafa;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #333; /* dark text */
+}
+
+.wrapup-text {
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  white-space: pre-wrap; /* preserve line breaks */
+}
+
+/* Back button styles */
+#backButton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+#backButton:hover {
+  background-color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .wrapup-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  #backButton {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}

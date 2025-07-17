@@ -1,0 +1,339 @@
+.center-card{
+  background-color: #154659;
+  border-radius: 10px white;
+  box-shadow: 5px 5px 5px 5px  rgba(0, 0, 0, 0.5);
+   background-size: cover;
+        background-blend-mode: overlay;
+}
+
+
+.right-section .card {
+    display: flex;
+    flex-direction: column; /* Arrange content vertically */
+    /* justify-content: space-between; Push the image to the bottom */
+    height: 100%; /* Ensure the card takes up the full height */
+  }
+  
+  .card ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .card ul li {
+    list-style-type: none;
+    margin-bottom: 10px; /* Adds spacing between text boxes */
+  }
+
+  .card ul li input[type="text"] {
+    width: 100%; /* Makes the text boxes span the full width of the parent box */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding is included in the width */
+  }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #195b75;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+    .left-section, .center-section, .right-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+      min-width: 250px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      padding: 20px;
+    }
+    .quote {
+      width:100%;
+      max-width: 400px;
+      padding: 10px;          
+      background: white;
+      border-radius: 10px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      margin: 0 auto 20px ;
+      text-align: center; 
+    }
+    input[type="text"], input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      margin-left: 13px;
+    }
+.login-button, .register-button {
+  padding: 10px;
+  width: 95%;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #000;
+  background: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 13px;
+}
+
+input[type="email"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  margin-left: 13px;
+}
+.routine-list {
+      list-style-type: none;
+      padding: 100px;
+    }
+    .routine-list li {
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    .routine-image {
+      display: block;
+      margin: 10px auto 0;
+      width: 80px;
+      height: 100px;
+     
+    }
+    .card, .calendar {
+    flex: 1; /* Ensures the cards and calendar stretch to fill the available height */
+    justify-content: space-between;
+  }
+     .button {
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .calendar {
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+    table {
+      width: 100%;
+      text-align: center;
+      border-spacing: 10px;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+      .header button {
+        padding: 10px 30px;
+        border-radius: 10px;
+        border: 1px solid #333;
+        background: #fff;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        font-weight: bold;
+        cursor: pointer;
+      }
+    .profile-icon {
+                position: absolute; /* Position the profile icon absolutely within the header */
+                 top: 0; /* Align it to the top */
+                 right: 8px; /* Align it to the right */
+                 margin: 16px; /* Add some spacing from the edges */
+                 width: 40px; /* Optional: Adjust the size if needed */
+                 height: 40px;
+                background: url('https://static-00.iconduck.com/assets.00/profile-major-icon-512x512-xosjbbdq.png') no-repeat center center;
+                background-size: cover;
+                border-radius: 50%;
+    }
+    
+    .center-section {
+    height: 450px;
+    align-items: center; /* Centers the login box and quote box */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+    padding-top: 0; /* Remove the padding at the top */
+    margin-top: 0;
+    
+}
+  
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+          
+          /*quiz*/
+
+
+.quiz-options button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.quiz-options button:hover {
+  background-color: #e0e0e0;
+}
+
+.quiz-feedback {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #007700;
+  text-align: center;
+}
+
+
+
+    /* Responsive Design for Mobile */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Stack sections vertically */
+      gap: 20px;
+    }
+
+    .quote {
+      max-width: 100%; /* Full width for smaller screens */
+    }
+
+    .center-section {
+      order: 2; /* Signup box below the quote */
+    }
+    .right-section {
+      order: 3; /* Master Your Routine below the signup box */
+    }
+
+    .left-section {
+      order: 4; /* To-Do List below Master Your Routine */
+    }
+
+    .calendar {
+      order: 5; /* Calendar below the To-Do List */
+    }
+
+    .routine-image {
+      width: 60px; /* Adjust image size for smaller screens */
+      height: 80px;
+    }
+  }
+   
+  #quiz-container {
+  text-align: center;
+  padding: 10px;
+}
+
+#quiz-container p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#quiz-container ul {
+  padding: 0;
+}
+
+#quiz-container li {
+  margin: 5px 0;
+}
+
+#quiz-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#quiz-container button:hover {
+  background-color: #0056b3;
+}
+
+#score {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Extra Responsive Design for Mobile */
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+  .container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+  }
+  .left-section, .center-section, .right-section {
+    min-width: unset;
+    padding: 0;
+    gap: 10px;
+  }
+  .card, .calendar {
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .center-card {
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .quote {
+    max-width: 100%;
+    font-size: 14px;
+    padding: 8px;
+    margin: 0 0 10px 0;
+  }
+  input[type="text"], input[type="password"], input[type="email"] {
+    width: 95%;
+    margin-left: 0;
+    font-size: 14px;
+    padding: 8px;
+  }
+  .login-button, .register-button {
+    width: 100%;
+    margin-left: 0;
+    font-size: 14px;
+    padding: 8px;
+  }
+  .routine-list {
+    padding: 10px;
+  }
+  .routine-image {
+    width: 50px;
+    height: 60px;
+  }
+  #quiz-container p {
+    font-size: 15px;
+  }
+  .quiz-options button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
